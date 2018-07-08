@@ -1,16 +1,16 @@
-### 苏宁车场公众号Web
+### new-react-project
 
 ```bash
-git clone git@gitlab.0easy.com:suning/suning-h5.git
-cd suning-h5
+git clone git@github.com:chenjun1127/react-new-project.git
+cd react-new-project
 npm install or yarn
 ```
 
-#### 开发环境
+#### develop environment
 ```bash
 npm run dev
 ```
-#### 生产环境
+#### production environment
 ```bash
 npm run build
 ```
