@@ -1,8 +1,7 @@
-var flexible = function(designWidth, maxWidth) {
+;(function(designWidth, maxWidth) {
     var doc = document,
         win = window,
         docEl = doc.documentElement,
-        remStyle = document.createElement("style"),
         tid;
 
     function refreshRem() {
@@ -10,17 +9,10 @@ var flexible = function(designWidth, maxWidth) {
         maxWidth = maxWidth || 540;
         width > maxWidth && (width = maxWidth);
         var rem = width * 100 / designWidth;
-        remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+        // remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+        doc.documentElement.style.fontSize=rem+'px';
     }
-
-    if (docEl.firstElementChild) {
-        docEl.firstElementChild.appendChild(remStyle);
-    } else {
-        var wrap = doc.createElement("div");
-        wrap.appendChild(remStyle);
-        doc.write(wrap.innerHTML);
-        wrap = null;
-    }
+ 
     //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
     refreshRem();
 
@@ -35,14 +27,4 @@ var flexible = function(designWidth, maxWidth) {
             tid = setTimeout(refreshRem, 300);
         }
     }, false);
-
-    if (doc.readyState === "complete") {
-        doc.body.style.fontSize = "16px";
-    } else {
-        doc.addEventListener("DOMContentLoaded", function(e) {
-            doc.body.style.fontSize = "16px";
-        }, false);
-    }
-}
-flexible(750,750);
-export default flexible;
+})(750, 750);

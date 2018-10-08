@@ -26,12 +26,11 @@
     "mobx": "^5.0.3",
     "mobx-react": "^5.2.3",
     "node-sass": "^4.9.1",
-    "optimize-css-assets-webpack-plugin": "^4.0.3",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^2.1.5",
     "react-hot-loader": "^4.3.3",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
-    "uglifyjs-webpack-plugin": "^1.2.7",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"

@@ -1,7 +1,7 @@
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = {
     module: {
         rules: [{
@@ -34,7 +34,6 @@ module.exports = {
         extensions: [".js", ".json", ".jsx", ".css", ".scss"],
     },
     plugins: [
-        new UglifyJSPlugin(),
         new MiniCssExtractPlugin({
             filename: 'css/[name].[chunkhash].css'
         }),
@@ -43,6 +42,7 @@ module.exports = {
             template: './templates/index.html',
             inject: 'body'
         }),
+        new OptimizeCssAssetsPlugin(),
     ],
     optimization: {
         splitChunks: {
@@ -57,7 +57,7 @@ module.exports = {
     },
     entry: {
         app: './src/index.js',
-        vendor: ['react', 'react-dom', 'react-router','./src/static/js/iconfont.js']
+        vendor: ['react', 'react-dom', 'react-router', './src/static/js/iconfont.js']
     },
 
     output: {
@@ -65,6 +65,8 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         chunkFilename: "js/[name].[chunkHash].js",
     },
-
+    performance: {
+        hints: false
+    },// 关闭性能提示
     mode: 'production'
 }
