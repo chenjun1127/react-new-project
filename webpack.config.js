@@ -1,3 +1,4 @@
+const webpack =  require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
                 loader: 'css-loader'
             }, {
                 loader: 'sass-loader'
-            },{
+            }, {
                 loader: 'postcss-loader'
             }]
         }]
@@ -28,6 +29,9 @@ module.exports = {
             title: 'demo',
             template: './templates/index.html',
             inject: 'body'
+        }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('development')
         })
     ],
     entry: './src/index.js',
@@ -35,6 +39,7 @@ module.exports = {
         filename: 'js/[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
+
 
     mode: 'development'
 }
