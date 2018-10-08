@@ -1,4 +1,4 @@
-### new-react-project
+### new-react-project（加入高阶组件）
 
 ```bash
 git clone git@github.com:chenjun1127/react-new-project.git
